@@ -1,0 +1,5 @@
+client.pro.user
+moc_*
+*.o
+*.bin
+.idea
