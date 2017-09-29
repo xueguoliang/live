@@ -1,1 +1,1 @@
-TARGET=Manager.bin
+TARGET = Manager.bin

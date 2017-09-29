@@ -1,1 +1,1 @@
-TARGET=Publisher.bin
+TARGET = Publisher.bin
