@@ -18,22 +18,23 @@ USE `livedb`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `torder`
+-- Table structure for table `tchat`
 --
 
-DROP TABLE IF EXISTS `torder`;
+DROP TABLE IF EXISTS `tchat`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `torder` (
+CREATE TABLE `tchat` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `studentid` int(11) DEFAULT NULL,
-  `subjectid` int(11) DEFAULT NULL,
-  `cost` int(11) DEFAULT NULL COMMENT '分为单位',
+  `msg` varchar(4096) NOT NULL,
+  `userid` int(11) NOT NULL,
+  `subjectid` int(11) NOT NULL,
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  KEY `fk_torder_1_idx` (`studentid`),
-  KEY `fk_torder_2_idx` (`subjectid`),
-  CONSTRAINT `fk_torder_1` FOREIGN KEY (`studentid`) REFERENCES `tuser` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_torder_2` FOREIGN KEY (`subjectid`) REFERENCES `tsubject` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `fk_tchat_1_idx` (`userid`),
+  KEY `fk_tchat_2_idx` (`subjectid`),
+  CONSTRAINT `fk_tchat_1` FOREIGN KEY (`userid`) REFERENCES `tuser` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_tchat_2` FOREIGN KEY (`subjectid`) REFERENCES `tsubject` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
