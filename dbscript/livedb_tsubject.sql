@@ -32,11 +32,10 @@ CREATE TABLE `tsubject` (
   `stream` varchar(32) NOT NULL,
   `parentid` int(11) NOT NULL,
   `time` datetime NOT NULL,
+  `isroot` enum('yes','no') NOT NULL DEFAULT 'no',
   PRIMARY KEY (`id`),
   KEY `fk_tsubject_1_idx` (`teacherid`),
-  KEY `fk_tsubject_2_idx` (`parentid`),
-  CONSTRAINT `fk_tsubject_1` FOREIGN KEY (`teacherid`) REFERENCES `tuser` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_tsubject_2` FOREIGN KEY (`parentid`) REFERENCES `tsubject` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_tsubject_1` FOREIGN KEY (`teacherid`) REFERENCES `tuser` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -49,4 +48,4 @@ CREATE TABLE `tsubject` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-09-29  9:39:08
+-- Dump completed on 2017-09-29  9:47:51
